@@ -4,3 +4,17 @@ export const addProductToCart = (product) => {
         payload: product
     }
 }
+
+export const removeCartProduct = (cart) => {
+    return {
+        type: "REMOVE_CART_PRODUCT",
+        payload: cart
+    }
+}
+
+export const removeAllCartProduct = (cart) => {
+    return {
+        type: "REMOVE_ALL_CART_PRODUCT",
+        payload: cart
+    }
+}

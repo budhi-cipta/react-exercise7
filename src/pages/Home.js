@@ -1,23 +1,24 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import {addProductToCart} from '../actions/action';
 
-import {addProductToCart} from '../actions/action'
+import './Pages.css';
 
 class Home extends Component {
     render() {
-        const products = this.props
-        console.log(this.props);
+        const products = this.props.products;
         return (
-            <div>
-                {products.map(item => 
-                <li key={item.id}>
-                    <h3>Nama Barang: {item.name}</h3>
-                    <h3>Harga Barang: {item.price}</h3>
-                    <h3>Stock Barang: {item.stock}</h3>
-                    <button onClick={this.props.addProductToCart.bind(this , item)}>add to cart</button>
-                </li>
-                )}
-                
+            <div className="container">
+                    {products.map(item => 
+                    <div className="product" key={item.id}>
+                        <li >
+                            <h3>Nama Barang: {item.name}</h3>
+                            <h3>Harga Barang: {`Rp. ${item.price.toLocaleString()}`}</h3>
+                            <h3>Stock Barang: {item.stock}</h3>
+                            <button onClick={this.props.addProductToCart.bind(this , item)}>add to cart</button>
+                        </li>
+                    </div>
+                    )}
             </div>
         );
     }
